@@ -1,1 +1,0 @@
-# formik_signup
