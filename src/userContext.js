@@ -21,7 +21,9 @@ const initialState = {
     }
   }
   const [count, dispatch] = useReducer(reducer, initialState)
-  const [name, setName] = useState('')
+  const [name, setName] = useState([
+      
+  ])
   const six = count.firstCounter
 
 
