@@ -4,14 +4,14 @@ export const UserContext = createContext();
 
 export const UserProvider = props => {
 
-const initialState = {
-    firstCounter: ''
-  }
+const initialState = ([
+
+])
   
   const reducer = (state, action) => {
     switch (action.type) {
         case 'increment':
-            return { firstCounter: action.value }
+            return {state: action.value} 
         case 'decrement':
             return { firstCounter: state.firstCounter - action.value }
         case 'reset':
@@ -21,14 +21,14 @@ const initialState = {
     }
   }
   const [count, dispatch] = useReducer(reducer, initialState)
-  const [name, setName] = useState([
-      
-  ])
-  const six = count.firstCounter
-
+  const [name, setName] = useState({
+      firstName: '',
+      lastName: '',
+      email: ''
+  });
 
     return (
-        <UserContext.Provider value={[ name, setName, six, dispatch ]}>
+        <UserContext.Provider value={[name, setName, count, dispatch ]}>
             {props.children}
         </UserContext.Provider>
     )
