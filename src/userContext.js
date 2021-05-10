@@ -4,31 +4,27 @@ export const UserContext = createContext();
 
 export const UserProvider = props => {
 
-const initialState = ([
-
-])
-  
-  const reducer = (state, action) => {
+const [users, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-        case 'increment':
-            return {state: action.value} 
-        case 'decrement':
-            return { firstCounter: state.firstCounter - action.value }
-        case 'reset':
-            return initialState
-        default:
-            return state
+        case 'add':
+            return [
+                ...state,
+                {
+                    id: state.length,
+                    name: action.name,
+                    email: action.email,
+                    subject: action.subject
+                }
+            ];
+        default: 
+            return state;
     }
-  }
-  const [count, dispatch] = useReducer(reducer, initialState)
-  const [name, setName] = useState({
-      firstName: '',
-      lastName: '',
-      email: ''
+})
+  const [content, setContent] = useState({
   });
 
     return (
-        <UserContext.Provider value={[name, setName, count, dispatch ]}>
+        <UserContext.Provider value={[content, setContent, users, dispatch ]}>
             {props.children}
         </UserContext.Provider>
     )

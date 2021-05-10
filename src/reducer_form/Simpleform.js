@@ -3,51 +3,57 @@ import { UserContext } from '../userContext';
 
 
 export const Simpleform = () => {
-    const {six, dispatch} = useContext(UserContext)
-    // const [firstName, setFirstName] = useState('');
-    // const [lastName, setLastName] = useState('');
-    // const [email, setEmail] = useState('');
-    const [name, setName] = useContext(UserContext);
+    const [users , dispatch] = useContext(UserContext)
+   
+    const [content, setContent] = useContext(UserContext);
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [subject, setSubject] = useState('')
 
-    // const handleSubmit = e => {
-    //     e.preventDefault()
-    //     dispatch({ type: 'increment', value: welcome })
-    // }
+    const handleSubmit = e => {
+        e.preventDefault()
+        dispatch({ type: 'add',
+                   name: name,
+                   email: email,
+                   subject: subject })
+    }
 
-    const addForm = e => {
-        setName({...name, 
-            [e.target.name]: e.target.value
-         });
-    };
+    // const addForm = e => {
+    //     setContent({...content, 
+    //         [e.target.name]: e.target.value
+    //      });
+    // };
 
     
     return (
         <div>
-            <div>Count - {six}</div>
-            <form>
-                <label>firstName:</label>
+            <div>
+                {users.name}
+            </div>
+            <form onSubmit={handleSubmit}>
+                <label>Name:</label>
                 <input 
                     type="text"
-                    name="firstName"
-                    onChange={addForm}
-                    value = {name.firstName}
+                    name="name"
+                    onChange={(e) => {setName(e.target.value)}}
+                    value = {name}
                     
-                />
-                <br/>
-                <label>lastName:</label>
-                <input 
-                    type="text"
-                    name="lastName"
-                    onChange={addForm}
-                    value = {name.lastName}
                 />
                 <br/>
                 <label>email:</label>
                 <input 
                     type="text"
                     name="email"
-                    onChange={addForm}
-                    value = {name.email}
+                    onChange={(e) => {setEmail(e.target.value)}}
+                    value = {email}
+                />
+                <br/>
+                <label>subject:</label>
+                <input 
+                    type="text"
+                    name="subject"
+                    onChange={(e) => {setSubject(e.target.value)}}
+                    value = {subject}
                 />
                 <button>welcome</button>
             </form>
