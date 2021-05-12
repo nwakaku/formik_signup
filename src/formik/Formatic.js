@@ -16,8 +16,7 @@ const initialValues = {
 }
 
 
-const onSubmit = (values, e) => {
-    e.preventDefault()
+const onSubmit = (values) => {
     dispatch({
         type: 'add',
         name: values.name,

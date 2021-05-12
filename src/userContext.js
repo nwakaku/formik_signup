@@ -11,7 +11,7 @@ const [users, dispatch] = useReducer((state, action) => {
                 ...state,
                 {
                     id: state.length,
-                    name: 'action.name',
+                    name: action.name,
                     email: action.email,
                     channel: action.channel
                 }
