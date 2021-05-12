@@ -1,7 +1,7 @@
 import { UserProvider } from './userContext';
 import React, { useState } from 'react';
 import ComponentC from './components/ComponentC';
-import Simpleform from './reducer_form/Simpleform';
+import Formatic from './formik/Formatic'
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        <Simpleform />
+        <Formatic />
         <ComponentC />
       </UserProvider>
     </div>
