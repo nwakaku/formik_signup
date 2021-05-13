@@ -2,10 +2,10 @@ import React, { useContext} from 'react'
 import { UserContext } from '../userContext';
 
 function ComponentF() {
-    // const [six] = useContext(UserContext)
+    const [{users}] = useContext(UserContext)
     return (
         <div>
-            {/* useContext Name - {six} */}
+            useContext Name - {users.name}
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState } from 'react'
+import React, { createContext, useReducer} from 'react'
 
 export const UserContext = createContext();
 
@@ -7,24 +7,24 @@ export const UserProvider = props => {
 const [users, dispatch] = useReducer((state, action) => {
     switch (action.type) {
         case 'add':
-            return [
+            return {
                 ...state,
-                {
-                    id: state.length,
-                    name: action.name,
-                    email: action.email,
-                    channel: action.channel
-                }
-            ];
+                name:action.name,
+                email:action.email,
+                channel: action.channel,
+            };
+        case 'minus':
+            return {
+                state
+            }
         default: 
             return state;
     }
 })
-  const [content, setContent] = useState({
-  });
+
 
     return (
-        <UserContext.Provider value={[content, setContent, users, dispatch ]}>
+        <UserContext.Provider value={[ users, dispatch ]}>
             {props.children}
         </UserContext.Provider>
     )
