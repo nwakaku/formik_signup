@@ -9,29 +9,46 @@ import TextError from './TextError';
 
 const Formatic = () => {
 const [users, dispatch,] = useContext(UserContext);
+const [error, setError] = useState('');
+const { auth } = useContext(UserContext);
+const [loading, setLoading] = useState(false)
 
 
 const initialValues = {
-    name: '',
     email: '',
-    channel: ''
+    password: '',
+    comfirmPassword: ''
 }
 
 
-const onSubmit = (values,) => {
-    dispatch({
-        type: 'add',
-        name: values.name,
-        email: values.email,
-        channel: values.channel
-    })
-    console.log('first dipatch', users)
-}
+async function onSubmit(values){
+
+    if (values.password !== 
+    values.comfirmPassword) {
+        return setError('passwords do not match')
+    }
+
+    try {
+        setError('')
+        setLoading(true)
+        await auth.createUserWithEmailAndPassword({email:values.email, password:values.password})
+        } 
+        catch {
+            setError('Failed to create an account')
+        }
+       setLoading(false)
+       
+        console.log('first dipatch', values.email)
+            setError('')
+    }
+      
+  
+
 
 const validationSchema = Yup.object({
-    name: Yup.string().required('Required'),
     email: Yup.string().email('Invalid email format').required('Required'),
-    channel: Yup.string().required('Required')
+    password: Yup.string().required('Required'),
+    comfirmPassword: Yup.string().required('Required')
 }) 
   return (
         <Formik 
@@ -40,26 +57,29 @@ const validationSchema = Yup.object({
             onSubmit={onSubmit}>
 
                 <Form>
-                    {users ? <div>{users.name}<br/>{users.email}<br/>{users.channel}</div> : null }
-                    <div className='form-control'>
-                        <label htmlFor='name'>Name</label>
-                        <Field type='text' id='name' name='name' />
-                        <ErrorMessage name='name' component={TextError}/>
-                    </div>
-
+                    {users ? <div>{users.password}<br/>{users.email}<br/>{users.comfirmPassword}</div> : null }
+                    {error ? <div>{error}</div>: null }
                     <div className='form-control'>
                         <label htmlFor='email'>Email</label>
                         <Field type='text' id='email' name='email' />
                         <ErrorMessage name='email' component={TextError}/>
+                    </div>  
+                                
+                   <div className='form-control'>
+                        <label htmlFor='password'>Password</label>
+                        <Field type='password' id='password' name='password' />
+                        <ErrorMessage name='password' component={TextError}/>
                     </div>
+
+
 
                     <div className='form-control'>
-                        <label htmlFor='channel'>Channel</label>
-                        <Field type='text' id='channel' name='channel' />
-                        <ErrorMessage name='channel' component={TextError}/>
+                        <label htmlFor='comfirmPassword'>ComfirmPassword</label>
+                        <Field type='password' id='comfirmPassword' name='comfirmPassword' />
+                        <ErrorMessage name='comfirmPassword' component={TextError}/>
                     </div>
 
-                    <button type='submit'>Submit</button>
+                    <button disabled={loading} type='submit'>Submit</button>
                 </Form>
             
         </Formik>
