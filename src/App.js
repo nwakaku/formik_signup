@@ -4,6 +4,8 @@ import React from 'react';
 import Formatic from './formik/Formatic'
 import Dashboard from './formik/Dashboard'
 import Login from './formik/Login'
+import PrivateRoute from "./formik/PrivateRoute";
+import PasswordReset from "./formik/PasswordReset";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
@@ -14,9 +16,10 @@ function App() {
       <Router>
         <UserProvider>
           <Switch>
-            <Route exact path='/' component={Dashboard} />
+            <PrivateRoute exact path='/' component={Dashboard} />
             <Route path='/formatic' component={Formatic} />
             <Route path='/login' component={Login} />
+            <Route path='/passwordReset' component={PasswordReset} />
           </Switch>
       </UserProvider>
       </Router>
