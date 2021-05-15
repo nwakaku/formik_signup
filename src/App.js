@@ -3,6 +3,7 @@ import React from 'react';
 // import ComponentC from './components/ComponentC';
 import Formatic from './formik/Formatic'
 import Dashboard from './formik/Dashboard'
+import Update from './formik/Update'
 import Login from './formik/Login'
 import PrivateRoute from "./formik/PrivateRoute";
 import PasswordReset from "./formik/PasswordReset";
@@ -16,7 +17,8 @@ function App() {
       <Router>
         <UserProvider>
           <Switch>
-            <PrivateRoute exact path='/' component={Dashboard} />
+          <PrivateRoute path='/update' component={Update} />
+          <PrivateRoute exact path='/' component={Dashboard} />
             <Route path='/formatic' component={Formatic} />
             <Route path='/login' component={Login} />
             <Route path='/passwordReset' component={PasswordReset} />

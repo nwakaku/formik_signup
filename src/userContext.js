@@ -23,7 +23,7 @@ const [users, dispatch] = useReducer((state, action) => {
 })
 
 //trying out something
-// const [currentUser, setCurrentUser] = useState();
+const [currentUser, setCurrentUser] = useState();
 const [loading, setLoading] = useState(true);
 const signup = (email, password, fullName) => {
   let promise = new Promise(function (resolve, reject) {
@@ -68,23 +68,35 @@ const passwordReset = (email) => {
   });
   return promise;
 };
+
+const updateEmail = (email) => {
+  return users.updateEmail(email);
+};
+
+const updatePassword = (password) => {
+return users.updatePassword(password);
+};
+
 useEffect(() => {
   const unsubscribe = auth.onAuthStateChanged((user) => {
     dispatch({
         type: "add",
         user
     })
-    // setCurrentUser(user);
+    setCurrentUser(user);
     setLoading(false);
   });
   return unsubscribe;
 }, []);
 const value = {
+  currentUser,
     users,
   signup,
   signin,
   signout,
-  passwordReset
+  passwordReset,
+  updateEmail,
+  updatePassword
 };
     return (
         <UserContext.Provider value={value}>

@@ -52,7 +52,7 @@ const validationSchema = Yup.object({
                     {/* <div>{users.r.displayName}<br/>{users.r.email}<br/>{users.comfirmPassword}</div>  */}
                     {error ? <div>{error}</div>: null }
                     {message ? <div>{message}</div>: null }
-                    <h2>Login Here</h2>
+                    <h2>PasswordReset Here</h2>
 
                     
                     <div className='form-control'>
