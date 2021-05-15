@@ -7,11 +7,12 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
 
 const [users, dispatch] = useReducer((state, action) => {
+  const kite = action.user
     switch (action.type) {
         case 'add':
             return {
                 ...state,
-                r:action.user
+                kite
             };
         case 'minus':
             return {
@@ -23,7 +24,7 @@ const [users, dispatch] = useReducer((state, action) => {
 })
 
 //trying out something
-const [currentUser, setCurrentUser] = useState();
+// const [currentUser, setCurrentUser] = useState();
 const [loading, setLoading] = useState(true);
 const signup = (email, password, fullName) => {
   let promise = new Promise(function (resolve, reject) {
@@ -83,13 +84,13 @@ useEffect(() => {
         type: "add",
         user
     })
-    setCurrentUser(user);
+    // setCurrentUser(user);
     setLoading(false);
   });
   return unsubscribe;
 }, []);
 const value = {
-  currentUser,
+  // currentUser,
     users,
   signup,
   signin,

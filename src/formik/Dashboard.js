@@ -16,8 +16,8 @@ const Dashboard = () => {
     return (
         <div>
             <h2>
-            {users.r.displayName}<br />
-            {users.r.email}
+            {users.displayName}<br />
+            {users.email}
             </h2>
             <button onClick={handleSignout}>Log Out</button>
         </div>
