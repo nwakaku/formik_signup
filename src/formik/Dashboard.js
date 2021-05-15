@@ -16,8 +16,8 @@ const Dashboard = () => {
     return (
         <div>
             <h2>
-            {users.displayName}<br />
-            {users.email}
+            {users.kite.displayName}<br />
+            {users.kite.email}
             </h2>
             <button onClick={handleSignout}>Log Out</button>
         </div>
