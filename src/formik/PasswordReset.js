@@ -6,7 +6,7 @@ import TextError from './TextError';
 import { Link } from "react-router-dom"
 
 
-const Login = () => {
+const PasswordReset = () => {
 const {passwordReset, users} = useContext(UserContext);
 const [error, setError] = useState('');
 const [message, setMessage] = useState('');
@@ -48,36 +48,44 @@ const validationSchema = Yup.object({
             validationSchema={validationSchema}
             onSubmit={onSubmit}>
 
+            <div className='signup-form'>
                 <Form>
                     {/* <div>{users.r.displayName}<br/>{users.r.email}<br/>{users.comfirmPassword}</div>  */}
                     {error ? <div>{error}</div>: null }
-                    {message ? <div>{message}</div>: null }
-                    <h2>PasswordReset Here</h2>
+                    <div className='form-header'>
+                        <h2>PasswordReset</h2>
+                        <p>This is PasswordReset</p>
+                    </div>
 
                     
-                    <div className='form-control'>
+                    <div className='form-group'>
                         <label htmlFor='email'>Email</label>
-                        <Field type='text' id='email' name='email' />
+                        <Field type='text' id='email' name='email' className='form-control'/>
                         <ErrorMessage name='email' component={TextError}/>
                     </div>  
                                 
-                   <div className='form-control'>
+                   <div className='form-group'>
                         <label htmlFor='password'>Password</label>
-                        <Field type='password' id='password' name='password' />
+                        <Field type='password' id='password' name='password' className='form-control'/>
                         <ErrorMessage name='password' component={TextError}/>
                     </div>
 
-
-                    <button disabled={loading}  type='submit'>Log in</button>
-                    <div>
-                    <Link to="/passwordReset">Forgot Password</Link>
-                    Need an account? <Link to='/formatic'>Register</Link>
+                    <div className="form-group">
+                    <button className="btn btn-primary btn-block btn-lg" disabled={loading}  type='submit'>Log in</button>
                     </div>
+
+
+                    <div className='text-center small'>
+                    <Link to="/login">Cancel</Link>
+                    Need an account? <Link to='/formatic'>Register</Link>
+                </div>
                 </Form>
+            
+            </div>
             
         </Formik>
     )
 }
 
-export default Login
+export default PasswordReset
 

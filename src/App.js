@@ -8,6 +8,7 @@ import Login from './formik/Login'
 import PrivateRoute from "./formik/PrivateRoute";
 import PasswordReset from "./formik/PasswordReset";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
 
 
 function App() {

@@ -68,46 +68,57 @@ const validationSchema = Yup.object({
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}>
-
-                <Form>
+                <div className="signup-form">
+                    <Form>
                     {/* <div>{users.r.displayName}<br/>{users.r.email}<br/>{users.comfirmPassword}</div>  */}
                     {error ? <div>{error}</div>: null }
-                    <h2>Register Here</h2>
-                    <div className='form-control'>
+
+                    <div className="form-header">
+                        <h2>Update</h2>
+                        <p>Shine your eye</p>
+                    </div>
+                    
+                    <div className='form-group'>
                         <label htmlFor='displayName'>DisplayName</label>
-                        <Field type='text' id='displayName' name='displayName' 
-                        value= {users.r.displayName}/>
+                        <Field type='text' id='displayName' name='displayName' className='form-control'
+                        value= {users.kite.displayName}/>
                         <ErrorMessage name='displayName' component={TextError}/>
                     </div>
                     
-                    <div className='form-control'>
+                    <div className='form-group'>
                         <label htmlFor='email'>Email</label>
-                        <Field type='text' id='email' name='email' 
-                            value={users.r.email}/>
+                        <Field type='text' id='email' name='email' className='form-control'
+                            value={users.kite.email}/>
                         <ErrorMessage name='email' component={TextError}/>
                     </div>  
                                 
-                   <div className='form-control'>
+                   <div className='form-group'>
                         <label htmlFor='password'>Password</label>
-                        <Field type='password' id='password' name='password' 
+                        <Field type='password' id='password' name='password' className='form-control'
                         placeholder='Leave blank to keep the same'/>
                         <ErrorMessage name='password' component={TextError}/>
                     </div>
 
 
 
-                    <div className='form-control'>
+                    <div className='form-group'>
                         <label htmlFor='comfirmPassword'>ComfirmPassword</label>
-                        <Field type='password' id='comfirmPassword' name='comfirmPassword' 
+                        <Field type='password' id='comfirmPassword' name='comfirmPassword' className='form-control'
                         placeholder='Leave blank to keep the same'/>
                         <ErrorMessage name='comfirmPassword' component={TextError}/>
                     </div>
 
-                    <button disabled={loading}  type='submit'>Update</button>
-                    <div>
+                    <div className="form-group">
+                    <button className="btn btn-primary btn-block btn-lg" disabled={loading}  type='submit'>Update</button>
+                    </div>
+
+                    <div className="text-center small">
                      <Link to='/'>Cancel</Link>
                     </div>
                 </Form>
+                </div>
+
+                
             
         </Formik>
     )

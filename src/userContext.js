@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useEffect, useState} from 'react'
-import { auth } from './firebase';
+import { auth, db } from './firebase';
 
 
 export const UserContext = createContext();
@@ -34,10 +34,24 @@ const signup = (email, password, fullName) => {
         ref.user.updateProfile({
           displayName: fullName,
         });
-        resolve(ref);
+        db.collection('userProfile')
+            .doc(fullName)
+            .set({
+              email,
+              fullName,
+              photoURL:
+                'https://firebasestorage.googleapis.com/v0/b/instagram-clone-66f7a.appspot.com/o/BlankImage.jpg?alt=media&token=c4d05e11-5df1-4a8a-ba8a-9a6f0cd36c4b',
+              bio: '',
+              website: '',
+              phone: '',
+            })
+            .then(() => {
+              resolve(ref);
+            });
       })
       .catch((error) => reject(error));
   });
+
   return promise;
 };
 const signin = (email, password) => {
