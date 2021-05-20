@@ -54,7 +54,7 @@ const validationSchema = Yup.object({
                     {error ? <div>{error}</div>: null }
                     <div className='form-header'>
                         <h2>PasswordReset</h2>
-                        <p>This is PasswordReset</p>
+                        <p>Reset-Format</p>
                     </div>
 
                     
@@ -77,7 +77,8 @@ const validationSchema = Yup.object({
 
                     <div className='text-center small'>
                     <Link to="/login">Cancel</Link>
-                    Need an account? <Link to='/formatic'>Register</Link>
+                     Need an account?
+                    <br/> <Link to='/formatic'>Register</Link>
                 </div>
                 </Form>
             

@@ -80,7 +80,8 @@ const validationSchema = Yup.object({
 
                     <div className='text-center small'>
                     <Link to="/passwordReset">Forgot Password</Link>
-                    Need an account? <Link to='/formatic'>Register</Link>
+                    Need an account?
+                    <br /> <Link to='/formatic'>Register</Link>
                 </div>
                 </Form>
             
